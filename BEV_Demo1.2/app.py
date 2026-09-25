@@ -68,12 +68,13 @@ up = st.file_uploader("Upload an artwork image", type=["jpg", "jpeg", "png", "we
 with st.expander("About this demo / limits"):
     st.markdown(
         "- Trained on 224×224 crops of artwork from ArtBench, WikiArt, MidJourney and Stable Diffusion. "
-        "In-distribution test accuracy: about 91% (Model A 90.8%, Model B 91.4%) and 92.5% for the ensemble.\n"
-        "- On two generators never seen in training, accuracy drops to about 77% (Model A) and 83% (Model B).\n"
-        "- On photo-style images (CIFAKE) it is weak, roughly 60–63% accuracy, so don't feed it photographs.\n"
+        "In-distribution test accuracy: 91.1% (Model A) and 92.3% (Model B), 93.3% for the ensemble.\n"
+        "- On two generators never seen in training, accuracy drops to about 80% (Model A) and 83% (Model B).\n"
+        "- On photo-style images (CIFAKE) it is weak, roughly 64% accuracy, so don't feed it photographs.\n"
         "- The score is a model probability, not proof. Noise, heavy compression or resizing lower reliability.\n"
-        "- LFAB adds little accuracy in the ablation (about +0.5 to +0.9 points in-distribution, and slightly "
-        "negative on unseen generators)."
+        "- LFAB adds little accuracy in the in-distribution ablation (about +0.6 points for both models). On "
+        "unseen generators it's a mixed bag: roughly flat for Model B (-0.3 pts) but a real drop for Model A "
+        "(-4.3 pts vs. no LFAB), so treat Model A's unseen-generator score as the less reliable of the two."
     )
 
 if up is None:
